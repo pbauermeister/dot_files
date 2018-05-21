@@ -1,0 +1,20 @@
+# command options
+alias e=emacs
+alias cp='cp -i'
+alias l='ls $LS_OPTIONS -lA'
+alias ll='ls $LS_OPTIONS -l'
+alias ls='ls $LS_OPTIONS'
+alias mv='mv -i'
+alias rm='rm -i'
+#alias diff='diff -R'
+#alias less='less -R'
+alias tree='tree -A'
+alias mc='mc --nomouse'
+
+# my bin collection
+export PATH=~/bin:$PATH
+
+# shell options
+export HISTFILESIZE=2000
+export EDITOR=emacs
+export LESS='-ri'
