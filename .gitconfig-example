@@ -1,0 +1,14 @@
+[user]
+	email = pascal.bauermeister@gmail.com
+	name = Pascal Bauermeister
+[push]
+	default = simple
+[color]
+	ui = auto
+[branch]
+	autosetuprebase = always
+[Alias]
+	lg = log --graph --pretty=format:'%Cred%h%Creset %ad %s %C(yellow)%d%Creset %C(bold blue)<%an>%Creset' --date=short
+	hist = log --graph --full-history --all --pretty=format:'%Cred%h%Creset %ad %s %C(yellow)%d%Creset %C(bold blue)<%an>%Creset' --date=short
+[gc]
+	autoDetach = false
