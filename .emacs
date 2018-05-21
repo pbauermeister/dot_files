@@ -22,3 +22,14 @@
 ;; a better file browser:
 (require 'bs)
 (global-set-key "\C-x\C-b" 'bs-show)
+
+;; fix problem when typing accented letters:
+(set-keyboard-coding-system nil)
+
+
+;; js
+(setq js-indent-level 2)
+
+;(add-to-list 'load-path "~/bin/lisp/")
+;(require 'typescript-mode)
+;(setq-default indent-tabs-mode nil)
