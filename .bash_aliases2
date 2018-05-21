@@ -18,3 +18,6 @@ export PATH=~/bin:$PATH
 export HISTFILESIZE=2000
 export EDITOR=emacs
 export LESS='-ri'
+
+
+echo "(bash_aliases2)"
