@@ -12,7 +12,7 @@
  )
 
 ;; Group backup files together: https://stackoverflow.com/a/151946
-(setq backup-directory-alist `(("." . "~/.saves")))
+(setq backup-directory-alist `(("." . "~/.emacs.saves")))
 (setq backup-by-copying t)
 (setq delete-old-versions t
   kept-new-versions 6
