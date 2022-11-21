@@ -9,7 +9,7 @@ alias rm='rm -i'
 #alias diff='diff -R'
 #alias less='less -R'
 alias tree='tree -A'
-alias mc='mc --nomouse'
+#alias mc='mc --nomouse'
 
 # my bin collection
 export PATH=~/bin:$PATH
@@ -19,5 +19,27 @@ export HISTFILESIZE=2000
 export EDITOR=emacs
 export LESS='-ri'
 
+lsof-port() {
+  lsof -i :$1
+}
+
+alias docker-mr-proper='
+    if [ ! -z "$(docker container ls -aq)" ]; then
+	docker container stop $(docker container ls -aq)
+    fi
+    docker system prune --volumes -f
+    docker system prune -a -f
+    docker builder prune -f
+'
+
+webm_to_mp4() {
+    mp4=$(dirname $1)/$(basename $1 .webm).mp4
+    #ffmpeg -i '/home/pascal/Downloads/c132a8b4-59d8-91d2-1d1f-1bd6056c6a3f.webm' -qscale 0 '/home/pascal/Downloads/004-flower-power.c.mp4'
+    #ffmpeg -i $1 -qscale 0 $mp4
+    #ffmpeg  -i $1 -vcodec libx264 -y -an $mp4 -vf "pad=ceil(iw/2)*2:ceil(ih/2)*2"
+
+    echo ffmpeg -i $1 -qscale 0 -crf 18 -vf "crop=trunc(iw/2)*2:trunc(ih/2)*2" $mp4
+    ffmpeg      -i $1 -qscale 0 -crf 18 -vf "crop=trunc(iw/2)*2:trunc(ih/2)*2" $mp4
+}
 
 echo "(bash_aliases2)"
