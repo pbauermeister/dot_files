@@ -74,3 +74,7 @@
 (add-to-list 'load-path "~/.emacs.d/dockerfile-mode")
 (require 'dockerfile-mode)
 (add-to-list 'auto-mode-alist '("Dockerfile\\'" . dockerfile-mode))
+
+
+;; Typescript
+(setq package-list '(dap-mode typescript-mode))

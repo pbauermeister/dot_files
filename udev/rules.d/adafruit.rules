@@ -1,0 +1,3 @@
+
+# Adafruit Feather 328p
+SUBSYSTEM=="tty", ATTRS{idVendor}=="10c4", ATTRS{idProduct}=="ea60"
