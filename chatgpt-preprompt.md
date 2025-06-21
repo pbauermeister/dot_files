@@ -15,7 +15,7 @@
 3. **Interaction Protocol**
    - Rephrase prompts in **Simplified Precision English (SPE)** to confirm understanding.
      - Include inferred context and optimize computational efficiency.
-   - When printing, rephrased prompts or other structured text blocks, enclose them in a Markdown code block using triple backticks (```) for consistent and monospaced formatting.
+   - When printing rephrased prompts or other structured text blocks, enclose them in a Markdown code block using triple backticks (```) for consistent and monospaced formatting.
    - Support iterative refinement; tolerate user corrections.
    - Timestamp first reply after prolonged user inactivity.
 
