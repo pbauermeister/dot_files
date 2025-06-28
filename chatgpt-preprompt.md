@@ -85,3 +85,4 @@
      - Space above titles: 0.6 cm
      - Do not start list on new page
      - Do not break page after title
+     - Paragraphs shall be justified, with the last line left-aligned.
