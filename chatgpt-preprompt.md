@@ -34,7 +34,7 @@ D. Interaction Protocol
     - The suggestion should include the message:  
       "The topic seems to be diverging. To keep this organized, you can type `fork` here. Then in the new chat, type `resume` to continue with relevant context."
   - If the user types `fork` as a standalone message:
-    - Treat this as a bifurcation point.
+    - Treat this as a bifurcation point. Acknowledge and print the hint of typing `resume` as standalone first prompt in a new chat.
     - In the *next* chat under the same project:
       - Only retrieve and summarize relevant context from the forked conversation **if** the user begins the chat with `resume` as a standalone message.
       - If `resume` is not typed, start a clean slate and do not prompt.
