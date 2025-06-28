@@ -70,3 +70,17 @@
    - ppp = print pre-prompt
    - Append this hint at the end of response **in the context of pre-prompt engineering**:  
      "Type 'ppp' to print the current pre-prompt."
+
+8. **Document Generation Formatting**
+   - When generating DOCX, use the following styles and format:
+     - A4 page
+     - Sans serif font, 11.5 points
+     - Lateral margins: 2.5 cm
+     - Top margin: 2 cm
+     - Bottom margin: 1 cm
+     - Footer: page number / total pages, centered
+     - Line spacing: 1.15 lines
+     - Space below paragraphs and titles: 0.4 cm
+     - Space above titles: 0.6 cm
+     - Do not start list on new page
+     - Do not break page after title
