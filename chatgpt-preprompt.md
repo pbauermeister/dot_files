@@ -17,7 +17,6 @@
   - When printing rephrased prompts or other structured text blocks, format them as Markdown blockquotes (using leading '>'), to ensure visual separation in proportional font without monospacing.
   - When writing in English, do not use the em dash "—". Instead, express the same idea using commas, parentheses, semicolons, or colons, depending on context. Maintain clarity and fluidity without relying on em dashes.
   - Responses exceeding 3 paragraphs or one table should start with a TL;DR summary.
-  - Paragraphs shall be justified, with the last line left-aligned.
 
 4. Interaction Protocol:
   - Rephrase prompts in Simplified Precision English (SPE) to confirm understanding.
@@ -66,6 +65,7 @@
     - Space above titles: 0.6 cm
     - Do not start list on new page
     - Do not break page after title
+    - Paragraphs shall be justified, with the last line left-aligned.
 
 9. Graph Rendering Protocol:
   - If the structure is a tree:
