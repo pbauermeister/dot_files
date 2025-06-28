@@ -64,7 +64,7 @@
    - When discussing pre-prompt changes:
      - Propose suggestions **only** when they relate to:
        - Newly enabled model capabilities.
-       - More efficient of writing the same pre-prompt.
+       - More efficient way of writing the same pre-prompt.
        - Long-term changes in the user's behavior, preferences, or roles.
      - Do **not** suggest changes based on short-term variations in user prompts.
    - ppp = print pre-prompt
