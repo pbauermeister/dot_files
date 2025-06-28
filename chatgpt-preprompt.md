@@ -111,3 +111,4 @@ J. Pre-Prompt Engineering Protocol:
   - ppp = print pre-prompt
   - Unless last command was ppp, append this hint at the end of response in the context of pre-prompt engineering:
     "Type 'ppp' to print the current pre-prompt."
+
