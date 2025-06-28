@@ -80,6 +80,7 @@ I. Graph Rendering Protocol
   - For edges with text labels:
     - Minimum length 1.75.
     - Text of label: Times New Roman italics, dark grey, insert newline after each second word.
+  - Rankdir=RB
   - Render and display the graphic as an inline bitmap in the response.
   - Additionally, offer to provide a download link for the rendered graph as SVG, but do not render before confirmation.
 
