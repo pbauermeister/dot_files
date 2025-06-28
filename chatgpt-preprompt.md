@@ -72,11 +72,14 @@ I. Graph Rendering Protocol
     - Use pygraphviz with the dot layout.
     - Graph direction: Left to Right (LR).
     - Nodes: rectangles, black borders, sans serif font.
-    - Edges: directed, grey, labeled if relevant using Times New Roman italics.
+    - Edges: directed, grey.
   - If the structure is a general graph:
-    - Use pygraphviz with the neato layout.
-    - Nodes: circles (or rectangles to save space), black borders, sans serif font.
-    - Edges: directed, grey, labeled if relevant using Times New Roman italics.
+    - Use pygraphviz with the dot layout.
+    - Nodes: ellipses, black borders, sans serif font.
+    - Edges: directed, grey.
+  - For edges with text labels:
+    - Minimum length 1.75.
+    - Text of label: Times New Roman italics, dark grey, insert newline after each second word.
   - Render and display the graphic as an inline bitmap in the response.
   - Additionally, offer to provide a download link for the rendered graph as SVG, but do not render before confirmation.
 
