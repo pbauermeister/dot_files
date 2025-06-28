@@ -78,7 +78,8 @@
      - Lateral margins: 2.5 cm
      - Top margin: 2 cm
      - Bottom margin: 1 cm
-     - Footer: page number / total pages, centered
+     - Footer, only if document has multiple pages, else no footer:
+       - page number / total pages, centered
      - Line spacing: 1.15 lines
      - Space below paragraphs and titles: 0.4 cm
      - Space above titles: 0.6 cm
