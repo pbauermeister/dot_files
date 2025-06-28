@@ -1,3 +1,6 @@
+##############################
+# Generic stuff
+
 # command options
 alias e=emacs
 alias cp='cp -i'
@@ -7,9 +10,13 @@ alias ls='ls $LS_OPTIONS'
 alias mv='mv -i'
 alias rm='rm -i'
 #alias diff='diff -R'
+alias diff='diff --color'
 #alias less='less -R'
 alias tree='tree -A'
 #alias mc='mc --nomouse'
+
+alias uncolor="sed 's/\x1b\[[0-9;]*m//g'"
+alias pp="python -mjson.tool"
 
 # my bin collection
 export PATH=~/bin:$PATH
@@ -22,6 +29,47 @@ export LESS='-ri'
 lsof-port() {
   lsof -i :$1
 }
+
+alias os-of="sudo nmap -O -sV"
+
+# emscripten
+source "/home/pascal/dev/perso/emsdk/emsdk_env.sh" 2>/dev/null
+
+# video formats
+webm_to_mp4() {
+    mp4=$(dirname $1)/$(basename $1 .webm).mp4
+    echo ffmpeg -i $1 -qscale 0 $mp4
+    #ffmpeg -i $1 -qscale 0 $mp4
+    #ffmpeg  -i $1 -vcodec libx264 -y -an $mp4 -vf "pad=ceil(iw/2)*2:ceil(ih/2)*2"
+    ffmpeg -i $1 -qscale 0 -vf "crop=trunc(iw/2)*2:trunc(ih/2)*2" $mp4
+}
+
+##############################
+# git
+
+git-burgeon() {
+    if [ -z "$2" ]; then
+	echo "usage: git-burgeon branch1 branch2 [OPTIONS]"
+    else
+	git rev-list --merges --boundary  $1 $2 >/dev/null && (
+	git rev-list --merges --boundary  $1 $2 | tail -1 | sed 's/^-//g'
+	rev=$(git rev-list --merges --boundary  $1 $2 | tail -1 | sed 's/^-//g')
+	git show $rev $3 )
+    fi
+}
+
+git-list-gone-branches() {
+    git fetch -p && git branch -vv | awk '/: gone]/{print $1}'
+}
+
+alias gitdiffcolor='git diff --color=always'
+
+# Git Revert
+#git revert --no-edit <first_bad_commit_id>^..<last_bad_commit_id>
+alias git-revert-howto='echo "git revert --no-edit <first_bad_commit_id>^..<last_bad_commit_id>"'
+
+##############################
+# docker
 
 alias docker-mr-proper='
     if [ ! -z "$(docker container ls -aq)" ]; then
@@ -41,5 +89,15 @@ webm_to_mp4() {
     echo ffmpeg -i $1 -qscale 0 -crf 18 -vf "crop=trunc(iw/2)*2:trunc(ih/2)*2" $mp4
     ffmpeg      -i $1 -qscale 0 -crf 18 -vf "crop=trunc(iw/2)*2:trunc(ih/2)*2" $mp4
 }
+alias docker-logs-du='sudo du -h $(docker inspect --format="{{.LogPath}}" $(docker ps -qa))'
+alias docker-compose='docker compose'
 
-echo "(bash_aliases2)"
+##############################
+# Python
+
+alias venv-make="python3 -m venv .venv"
+alias venv-activate=". .venv/bin/activate"
+
+##############################
+
+#echo "(bash_aliases2)"

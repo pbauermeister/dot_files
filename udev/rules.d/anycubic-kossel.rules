@@ -1,0 +1,8 @@
+# Silicon Labs: CP2102 USB to UART Bridge Controller
+# Appears on /dev/ttyUSBn -and- /dev/ttyACM0
+#
+# Boards:
+# - Adafruit Feather 328p
+# - atmega2560 based, e.g. Anycubic Kossel Trigorilla
+
+SUBSYSTEM=="tty", ATTRS{idVendor}=="10c4", ATTRS{idProduct}=="ea60", SYMLINK="ttyACM0"
