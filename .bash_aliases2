@@ -1,5 +1,11 @@
 ##############################
-# Generic stuff
+# Hacks
+
+# https://bbs.archlinux.org/viewtopic.php?id=176663
+export NO_AT_BRIDGE=1
+
+##############################
+# Generic aliases and functions
 
 # command options
 alias e=emacs
@@ -18,22 +24,16 @@ alias tree='tree -A'
 alias uncolor="sed 's/\x1b\[[0-9;]*m//g'"
 alias pp="python -mjson.tool"
 
-# my bin collection
-export PATH=~/bin:$PATH
-
 # shell options
 export HISTFILESIZE=2000
 export EDITOR=emacs
 export LESS='-ri'
 
+# identify this
 lsof-port() {
   lsof -i :$1
 }
-
 alias os-of="sudo nmap -O -sV"
-
-# emscripten
-source "/home/pascal/dev/perso/emsdk/emsdk_env.sh" 2>/dev/null
 
 # video formats
 webm_to_mp4() {
@@ -44,17 +44,35 @@ webm_to_mp4() {
     ffmpeg -i $1 -qscale 0 -vf "crop=trunc(iw/2)*2:trunc(ih/2)*2" $mp4
 }
 
+# WireGuard
+alias wg-gen-keypair='
+    privk=$(wg genkey)
+    pubk=$(echo $privk | wg pubkey)
+    echo "PrivateKey = $privk"
+    echo "PublicKey = $pubk"
+'
+
 ##############################
-# git
+# Git aliases
+
+git-my-work() {
+    for i in *; do (
+	cd $i
+	echo
+	echo "=== $i ==="
+	git log --pretty=format:"%ad:%d:%B" --date=short --reverse --all --since=2.weeks.ago --author="Pascal Bauermeister" \
+	    | grep -v -e '^[[:space:]]*$' | uniq
+    ) done
+}
 
 git-burgeon() {
+    set -e
     if [ -z "$2" ]; then
-	echo "usage: git-burgeon branch1 branch2 [OPTIONS]"
+	echo "usage: git-burgeon branch1 branch2"
     else
-	git rev-list --merges --boundary  $1 $2 >/dev/null && (
 	git rev-list --merges --boundary  $1 $2 | tail -1 | sed 's/^-//g'
 	rev=$(git rev-list --merges --boundary  $1 $2 | tail -1 | sed 's/^-//g')
-	git show $rev $3 )
+	git show $rev
     fi
 }
 
@@ -62,11 +80,11 @@ git-list-gone-branches() {
     git fetch -p && git branch -vv | awk '/: gone]/{print $1}'
 }
 
-alias gitdiffcolor='git diff --color=always'
+alias git-diffcolor='git diff --color=always'
 
 # Git Revert
 #git revert --no-edit <first_bad_commit_id>^..<last_bad_commit_id>
-alias git-revert-howto='echo "git revert --no-edit <first_bad_commit_id>^..<last_bad_commit_id>"'
+git-revert-howto='echo "git revert --no-edit <first_bad_commit_id>^..<last_bad_commit_id>"'
 
 ##############################
 # docker
@@ -99,5 +117,14 @@ alias venv-make="python3 -m venv .venv"
 alias venv-activate=". .venv/bin/activate"
 
 ##############################
+# Shell prompt
 
+# Prompt w/ git branch
+export PS1="\n[\033[34;7m \u@\h \033[0m \033[32m\w\033[33m\$(git branch 2>/dev/null | grep '^*' | colrm 1 1) \033[0m\$(TZ=Europe/Zurich date +%H:%M)]\n\$ "
+export PS1="\n[\033[36m\u@\h \033[32m\w\033[30m\$(git branch 2>/dev/null | grep '^*' | colrm 1 1) \033[0m\$(date +%H:%M)]\n\$ "
+
+# [ login path git-branch time SHLVL-if-gt-1 ]
+export PS1="\n[\033[36m\u@\h \033[38;5;172m\w\033[32m\$(git branch 2>/dev/null | grep '^*' | colrm 1 1) \033[0m\$(date +%H:%M:%S)$(if [ ! "$SHLVL" = "1" ]; then printf " \033[7m$SHLVL\033[0m"; fi )]\n\$ "
+
+##############################
 #echo "(bash_aliases2)"
