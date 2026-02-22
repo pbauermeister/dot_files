@@ -1,0 +1,4 @@
+KERNEL=="event*", ATTRS{idVendor}=="046d", ATTRS{idProduct}=="c62b", MODE="0660", GROUP="plugdev"
+KERNEL=="event*", ATTRS{idVendor}=="256f", ATTRS{idProduct}=="c635", MODE="0660", GROUP="plugdev"
+KERNEL=="event*", ATTRS{idVendor}=="256f", ATTRS{idProduct}=="c633", MODE="0660", GROUP="plugdev"
+
