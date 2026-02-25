@@ -84,7 +84,7 @@ alias git-diffcolor='git diff --color=always'
 
 # Git Revert
 #git revert --no-edit <first_bad_commit_id>^..<last_bad_commit_id>
-git-revert-howto='echo "git revert --no-edit <first_bad_commit_id>^..<last_bad_commit_id>"'
+alias git-revert-howto='echo "git revert --no-edit <first_bad_commit_id>^..<last_bad_commit_id>"'
 
 ##############################
 # docker
